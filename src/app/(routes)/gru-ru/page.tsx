@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { FormCreateGRU } from "@/components/form-create-gru";
 
 export const metadata: Metadata = {
-  title: "GRU Restaurante Universitário - NTI",
+  title: "GRU Restaurante Universitário",
   description:
     "Gere facilmente seu boleto de GRU para o Restaurante Universitário da UFAL",
 };

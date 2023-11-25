@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FormCreateGRU } from "@/components/form-create-gru";
 
 export const metadata: Metadata = {
-  title: "GRU Biblioteca - NTI",
+  title: "GRU Biblioteca",
   description:
     "Gere facilmente seu boleto de GRU para pagamento de multas do sistema de bibliotecas da UFAL",
 };

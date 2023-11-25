@@ -8,7 +8,10 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Geração de GRU UFAL - NTI",
+  title: {
+    template: "%s | NTI - UFAL",
+    default: "Gerador de GRU | NTI - UFAL",
+  },
   description: "Gere facilmente seu boleto de GRU para a UFAL",
   keywords: "GRU, UFAL, Arapiraca, NTI, Gerador de GRU",
 };
