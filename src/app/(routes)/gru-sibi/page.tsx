@@ -31,7 +31,7 @@ export default function GRUSibiPage() {
           </p>
         </div>
       </div>
-      <FormCreateGRU />
+      <FormCreateGRU type="sibi" />
     </section>
   );
 }
