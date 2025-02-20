@@ -40,5 +40,5 @@ export function getGruURL({
     competencia: currentMonthAndYear,
   });
 
-  return `apiUrl?${searchParams.toString()}`;
+  return `${apiUrl}?${searchParams.toString()}`;
 }
