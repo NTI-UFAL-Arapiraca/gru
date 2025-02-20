@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { FormCreateGRU } from "@/components/form-create-gru";
 
@@ -31,7 +31,7 @@ export default function GRURuPage() {
           </p>
         </div>
       </div>
-      <FormCreateGRU />
+      <FormCreateGRU type="ru" locale="arapiraca" />
     </section>
   );
 }
