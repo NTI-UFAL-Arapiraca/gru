@@ -28,7 +28,9 @@ export const generateGruDigitalURL = ({
     })
     .replace(/(\d{2})\/(\d{2})\/(\d{4})/g, "$3-$1-$2");
 
-  const currentMonthAndYear = `${today.getFullYear()}-${today.getMonth() + 1}`; // month is 0-indexed
+  const currentMonthAndYear = `${today.getFullYear()}-${
+    today.getMonth() + 1
+  }-01`; // month is 0-indexed
 
   const searchParams = new URLSearchParams();
   searchParams.append("servico", serviceCode);
