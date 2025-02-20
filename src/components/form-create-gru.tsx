@@ -11,10 +11,6 @@ import { Label } from "@/components/ui/label";
 
 import { useGenerateGRU } from "@/hooks/useGenerateGRU";
 
-import {
-  GRU_DIGITAL_DATA_BY_UNIVERSITY_LOCATION,
-  GruDigitalLocale,
-} from "@/constants/gru-digital-data";
 import { generateGruDigitalURL } from "@/helpers/generate-url-gru-digital";
 import { validateCPF } from "@/helpers/validate-cpf";
 import { Card, CardContent } from "./ui/card";
@@ -38,12 +34,15 @@ const makeMaskCpf = (cpf: string) => {
     .replace(/(-\d{2})\d+?$/, "$1");
 };
 
-type FormCreateGRUProps = {
-  type: "sibi" | "ru";
-  locale: GruDigitalLocale;
-};
+type FormCreateGRUProps = Record<
+  "gruSimples" | "gruDigital",
+  {
+    serviceCode: string;
+    referenceNumber: string;
+  }
+>;
 
-export function FormCreateGRU({ type, locale }: FormCreateGRUProps) {
+export function FormCreateGRU({ gruSimples, gruDigital }: FormCreateGRUProps) {
   const {
     register,
     control,
@@ -63,21 +62,21 @@ export function FormCreateGRU({ type, locale }: FormCreateGRUProps) {
   const { mutation, loading } = useGenerateGRU();
 
   const onSubmit = handleSubmit((data: GRUFormValue) =>
-    mutation({ ...data, type }).then(() => reset())
+    mutation({
+      ...data,
+      serviceCode: gruSimples.serviceCode,
+      referenceNumber: gruSimples.referenceNumber,
+    }).then(() => reset())
   );
 
   const handlePayWithPixOrCard = async () => {
     handleSubmit((data) => {
-      const gruData =
-        GRU_DIGITAL_DATA_BY_UNIVERSITY_LOCATION[locale][
-          type === "ru" ? "gruRestaurant" : "gruLibrary"
-        ];
       const url = generateGruDigitalURL({
         cpf: data.document.replace(/\D/g, ""),
         name: data.name,
         value: data.value,
-        serviceCode: gruData.serviceCode,
-        referenceNumber: gruData.referenceNumber,
+        serviceCode: gruDigital.serviceCode,
+        referenceNumber: gruDigital.referenceNumber,
       });
 
       const anchor = Object.assign(document.createElement("a"), {
