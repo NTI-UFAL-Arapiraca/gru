@@ -1,1 +1,1 @@
-export type GRU = "ru" | "sibi";
+export type GRU = "gruLibrary" | "gruRestaurant";

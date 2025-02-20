@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { FormCreateGRU } from "@/components/form-create-gru";
+import { GRU_DIGITAL_DATA_BY_UNIVERSITY_LOCATION } from "@/constants/gru-digital-data";
+import { GRU_SIMPLE_DATA_BY_UNIVERSITY_LOCATION } from "@/constants/gru-simple-data";
 
 export const metadata: Metadata = {
   title: "GRU Restaurante Universitário",
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
 };
 
 export default function GRURuPage() {
+  const gruSimplesData =
+    GRU_SIMPLE_DATA_BY_UNIVERSITY_LOCATION.arapiraca.gruRestaurant;
+  const gruDigitalData =
+    GRU_DIGITAL_DATA_BY_UNIVERSITY_LOCATION.arapiraca.gruRestaurant;
+
   return (
     <section className="w-full max-w-md">
       <Image
@@ -31,7 +38,7 @@ export default function GRURuPage() {
           </p>
         </div>
       </div>
-      <FormCreateGRU type="ru" locale="arapiraca" />
+      <FormCreateGRU gruDigital={gruDigitalData} gruSimples={gruSimplesData} />
     </section>
   );
 }
