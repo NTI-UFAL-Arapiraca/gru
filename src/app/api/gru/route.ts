@@ -5,7 +5,8 @@ import { z } from "zod";
 import { getGruURL } from "@/helpers/generate-urls";
 
 const createGRUSchema = z.object({
-  type: z.enum(["ru", "sibi"]),
+  serviceCode: z.string().min(1),
+  referenceNumber: z.string().min(1),
   name: z.string(),
   value: z.number(),
   document: z
@@ -20,11 +21,19 @@ export async function POST(request: NextRequest) {
   const typeSearchParam = searchParams.get("type");
 
   try {
-    const { name, value, document, type } = createGRUSchema.parse({
-      ...requestBody,
-      type: typeSearchParam,
+    const { name, value, document, serviceCode, referenceNumber } =
+      createGRUSchema.parse({
+        ...requestBody,
+        type: typeSearchParam,
+      });
+
+    const url = getGruURL({
+      name,
+      value,
+      document,
+      serviceCode,
+      referenceNumber,
     });
-    const url = getGruURL({ name, value, document, sibi: type === "sibi" });
     const pdf = await fetch(url).then((response) => response.blob());
 
     return new NextResponse(pdf, {

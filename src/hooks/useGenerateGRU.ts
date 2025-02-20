@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { GRUFormValue } from "@/components/form-create-gru";
 import { useToast } from "@/components/ui/use-toast";
 
-import { GRU } from "@/types";
-
 export function useGenerateGRU() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,13 +19,12 @@ export function useGenerateGRU() {
     }
   }, [error, toast]);
 
-  const mutation = async ({
-    type = "ru",
-    ...values
-  }: GRUFormValue & { type?: GRU }) => {
+  const mutation = async (
+    values: GRUFormValue & { serviceCode: string; referenceNumber: string }
+  ) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/gru?type=${type}`, {
+      const response = await fetch(`/api/gru`, {
         method: "POST",
         headers: {
           Accept: "application/pdf",
