@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    console.log(error?.message);
+    console.log(error);
     return NextResponse.json(
       { error: "Não foi possível gerar o boleto." },
       { status: 500 }
