@@ -7,7 +7,7 @@ export default function Page() {
       <section className="grid place-items-center">
         <div className="relative mb-6 h-40 w-40">
           <Image
-            src="/ufal.png"
+            src="/gru/ufal.png"
             alt="Brasão da UFAL"
             fill
             className="object-contain"
