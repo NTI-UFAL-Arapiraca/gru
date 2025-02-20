@@ -24,7 +24,7 @@ export function useGenerateGRU() {
   ) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/gru`, {
+      const response = await fetch(`/gru/api/gru`, {
         method: "POST",
         headers: {
           Accept: "application/pdf",
