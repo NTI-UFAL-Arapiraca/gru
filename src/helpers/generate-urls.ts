@@ -1,4 +1,5 @@
 const INSTITUTION_CODE = "153037";
+const apiUrl="https://pagtesouro.tesouro.gov.br/api/gru/portal/boleto-gru";
 
 export function getGruURL({
   value,
@@ -39,5 +40,5 @@ export function getGruURL({
     competencia: currentMonthAndYear,
   });
 
-  return `${process.env.API_URL}?${searchParams.toString()}`;
+  return `apiUrl?${searchParams.toString()}`;
 }
