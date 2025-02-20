@@ -20,7 +20,7 @@ export default function GRUSibiPage() {
   return (
     <section className="w-full max-w-md">
       <Image
-        src="/ufal.png"
+        src="/gru/ufal.png"
         width={150}
         height={150}
         alt="GRU Logo"
